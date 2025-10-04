@@ -1,111 +1,224 @@
 <!DOCTYPE html>
 <html lang="uz">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Manager</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="min-h-screen bg-gradient-to-br from-[#012A4A] to-[#0077B6] p-5 font-sans">
-  <div class="max-w-[1400px] mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
-    <h1 class="text-center text-white text-4xl font-light py-8 bg-gradient-to-br from-[#014F86] to-[#0096C7]">
-      Mahsulotlar Boshqaruvi
-    </h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="min-h-screen bg-gradient-to-br from-[#012A4A] to-[#0077B6] p-5 font-sans"
+  >
+    <div
+      class="max-w-[1400px] mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden"
+    >
+      <div
+        class="navbar flex items-center justify-between bg-gradient-to-br from-[#014F86] to-[#0096C7] px-6 py-4"
+      >
+        <h1 class="text-center text-white text-4xl font-light">
+          Mahsulotlar Boshqaruvi
+        </h1>
 
-    <div class="flex flex-col lg:flex-row min-h-[600px]">
-      <!-- Chap panel -->
-      <div class="w-full lg:w-[400px] bg-[#CAF0F8] border-r border-gray-200 p-6">
-        <div class="bg-[#ADE8F4] rounded-xl p-6 shadow-md">
-          <h2 class="text-xl font-semibold text-gray-800 mb-5">Yangi Mahsulot Qo'shish</h2>
-          <form id="productForm" class="space-y-4">
-            <div>
-              <label for="productName" class="block font-semibold text-gray-600 mb-2">Mahsulot nomi:</label>
-              <input id="productName" type="text" required
-                class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#0077B6]">
-            </div>
-
-            <div>
-              <label for="productImage" class="block font-semibold text-gray-600 mb-2">Rasm URL:</label>
-              <input id="productImage" type="url" placeholder="https://example.com/image.jpg"
-                class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#0077B6]">
-            </div>
-
-            <div>
-              <label for="productPrice" class="block font-semibold text-gray-600 mb-2">Narxi:</label>
-              <input id="productPrice" type="number" min="0" step="0.01" required
-                class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#0077B6]">
-            </div>
-
-            <div>
-              <label for="productStock" class="block font-semibold text-gray-600 mb-2">Sotib olish soni:</label>
-              <input id="productStock" type="number" min="0" required
-                class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#0077B6]">
-            </div>
-
-            <div class="flex items-center gap-2">
-              <input id="hasDiscount" type="checkbox" class="w-5 h-5">
-              <label for="hasDiscount" class="font-semibold text-gray-600">Skidka bor</label>
-            </div>
-
-            <div id="discountGroup" class="hidden">
-              <label for="discountPercent" class="block font-semibold text-gray-600 mb-2">Skidka foizi:</label>
-              <input id="discountPercent" type="number" min="0" max="100" step="1"
-                class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#0077B6]">
-            </div>
-
-            <div class="flex gap-3">
-              <button id="submitBtn" type="submit"
-                class="flex-1 bg-gradient-to-r from-[#014F86] to-[#00B4D8] text-white py-3 rounded-lg font-semibold hover:shadow-lg transition">
-                Mahsulot Qo'shish ➕
-              </button>
-              <button id="cancelBtn" type="button"
-                class="hidden flex-1 bg-[#03045E] text-white py-3 rounded-lg font-semibold hover:bg-[#012A4A] transition">
-                Bekor qilish
-              </button>
-            </div>
-          </form>
+        <div class="burger_menu">
+          <button id="btn-drawer">
+            <img class="h-8 w-8" src="./images/shopping-bag.png" alt="menu" />
+          </button>
         </div>
       </div>
 
-      
-      <div class="flex-1 p-6 bg-[#E0FBFC]">
-        <div class="mb-6 bg-[#ADE8F4] rounded-xl p-5">
-          <h2 class="text-xl font-semibold text-gray-800 mb-4">Filtrlar</h2>
-          <div class="flex flex-col sm:flex-row gap-4 items-center">
-            <label for="filterSelect" class="font-semibold text-gray-700">Filtirlash:</label>
-            <select id="filterSelect"
-              class="flex-1 px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#0077B6]">
-              <option value="">Filtrni tanlang</option>
-              <option value="az">A-Z (Alfabet)</option>
-              <option value="za">Z-A (Alfabet teskari)</option>
-              <option value="priceHigh">Narx ↑ (Yuqoridan pastga)</option>
-              <option value="priceLow">Narx ↓ (Pastdan yuqoriga)</option>
-            </select>
+      <div class="flex flex-col lg:flex-row min-h-[600px]">
+        <!-- Chap panel -->
+        <div
+          class="w-full lg:w-[400px] bg-[#CAF0F8] border-r border-gray-200 p-6"
+        >
+          <div class="bg-[#ADE8F4] rounded-xl p-6 shadow-md">
+            <h2 class="text-xl font-semibold text-gray-800 mb-5">
+              Yangi Mahsulot Qo'shish
+            </h2>
+            <form id="productForm" class="space-y-4">
+              <div>
+                <label
+                  for="productName"
+                  class="block font-semibold text-gray-600 mb-2"
+                  >Mahsulot nomi:</label
+                >
+                <input
+                  id="productName"
+                  type="text"
+                  required
+                  class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#0077B6]"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="productImage"
+                  class="block font-semibold text-gray-600 mb-2"
+                  >Rasm URL:</label
+                >
+                <input
+                  id="productImage"
+                  type="url"
+                  placeholder="https://example.com/image.jpg"
+                  class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#0077B6]"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="productPrice"
+                  class="block font-semibold text-gray-600 mb-2"
+                  >Narxi:</label
+                >
+                <input
+                  id="productPrice"
+                  type="number"
+                  min="0"
+                  step="0.01"
+                  required
+                  class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#0077B6]"
+                />
+              </div>
+
+              <div>
+                <label
+                  for="productStock"
+                  class="block font-semibold text-gray-600 mb-2"
+                  >Sotib olish soni:</label
+                >
+                <input
+                  id="productStock"
+                  type="number"
+                  min="0"
+                  required
+                  class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#0077B6]"
+                />
+              </div>
+
+              <div class="flex items-center gap-2">
+                <input id="hasDiscount" type="checkbox" class="w-5 h-5" />
+                <label for="hasDiscount" class="font-semibold text-gray-600"
+                  >Skidka bor</label
+                >
+              </div>
+
+              <div id="discountGroup" class="hidden">
+                <label
+                  for="discountPercent"
+                  class="block font-semibold text-gray-600 mb-2"
+                  >Skidka foizi:</label
+                >
+                <input
+                  id="discountPercent"
+                  type="number"
+                  min="0"
+                  max="100"
+                  step="1"
+                  class="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#0077B6]"
+                />
+              </div>
+
+              <div class="flex gap-3">
+                <button
+                  id="submitBtn"
+                  type="submit"
+                  class="flex-1 bg-gradient-to-r from-[#014F86] to-[#00B4D8] text-white py-3 rounded-lg font-semibold hover:shadow-lg transition"
+                >
+                  Mahsulot Qo'shish ➕
+                </button>
+                <button
+                  id="cancelBtn"
+                  type="button"
+                  class="hidden flex-1 bg-[#03045E] text-white py-3 rounded-lg font-semibold hover:bg-[#012A4A] transition"
+                >
+                  Bekor qilish
+                </button>
+              </div>
+            </form>
           </div>
         </div>
 
-        <div>
-          <h2 class="text-xl font-semibold text-gray-800 mb-4">Mahsulotlar Ro'yxati</h2>
-          <div class="bg-white rounded-xl shadow-md overflow-hidden">
-            <table class="w-full text-sm">
-              <thead class="bg-gradient-to-r from-[#03045E] to-[#0077B6] text-white">
-                <tr>
-                  <th class="px-4 py-3 text-left">Rasm</th>
-                  <th class="px-4 py-3 text-left">Nomi</th>
-                  <th class="px-4 py-3 text-left">Narxi</th>
-                  <th class="px-4 py-3 text-left">Sotib olish</th>
-                  <th class="px-4 py-3 text-left">Skidka</th>
-                  <th class="px-4 py-3 text-center">Amallar</th>
-                </tr>
-              </thead>
-              <tbody id="productsList"></tbody>
-            </table>
+        <div class="flex-1 p-6 bg-[#E0FBFC]">
+          <div class="mb-6 bg-[#ADE8F4] rounded-xl p-5">
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">Filtrlar</h2>
+            <div class="flex flex-col sm:flex-row gap-4 items-center">
+              <label for="filterSelect" class="font-semibold text-gray-700"
+                >Filtirlash:</label
+              >
+              <select
+                id="filterSelect"
+                class="flex-1 px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-[#0077B6]"
+              >
+                <option value="">Filtrni tanlang</option>
+                <option value="az">A-Z (Alfabet)</option>
+                <option value="za">Z-A (Alfabet teskari)</option>
+                <option value="priceHigh">Narx ↑ (Yuqoridan pastga)</option>
+                <option value="priceLow">Narx ↓ (Pastdan yuqoriga)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-xl font-semibold text-gray-800 mb-4">
+              Mahsulotlar Ro'yxati
+            </h2>
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+              <table class="w-full text-sm">
+                <thead
+                  class="bg-gradient-to-r from-[#03045E] to-[#0077B6] text-white"
+                >
+                  <tr>
+                    <th class="px-4 py-3 text-left">Rasm</th>
+                    <th class="px-4 py-3 text-left">Nomi</th>
+                    <th class="px-4 py-3 text-left">Narxi</th>
+                    <th class="px-4 py-3 text-left">Sotib olish</th>
+                    <th class="px-4 py-3 text-left">Skidka</th>
+                    <th class="px-4 py-3 text-center">Amallar</th>
+                  </tr>
+                </thead>
+                <tbody id="productsList"></tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="app.js"></script>
-</body>
+    <!-- Drawer Overlay -->
+    <div
+      id="overlay-drawer"
+      class="fixed inset-0 bg-black/60 hidden"
+      style="z-index: 99990"
+    >
+      <div
+        id="drawer"
+        class="absolute top-0 right-0 w-[455px] max-w-[90%] h-full bg-white transform translate-x-full transition-transform duration-300 flex flex-col"
+      >
+        <!-- Header modal -->
+        <div class="flex items-center justify-between p-4">
+          <h2 class="text-lg font-semibold">Shopping Cart (0)</h2>
+          <button id="close-drawer">
+            <img src="./images/remove.png" alt="Close" class="w-5 h-5" />
+          </button>
+        </div>
+
+        <!-- Products -->
+        <div class="flex-1 overflow-y-auto p-4 space-y-4"></div>
+
+        <div class="p-4 space-y-3">
+          <div class="flex items-center justify-between text-sm">
+            <span>(0) Mahsulot</span>
+            <span class="px-2 py-1font-bold rounded">0</span>
+          </div>
+
+          <button
+            class="w-full py-3 bg-[rgb(0,100,155)] text-white rounded-full font-medium"
+          >
+            Sotib olish
+          </button>
+        </div>
+      </div>
+    </div>
+    <script  src="./js/app.js"></script>
+  </body>
 </html>
